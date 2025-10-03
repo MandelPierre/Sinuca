@@ -37,6 +37,28 @@ public class Main {
             System.out.print("Quantos jogadores jogaram esta partida? ");
             int qtdJogadoresPartida = sc.nextInt();
             sc.nextLine();
+
+            List<Jogador> jogadoresDaPartida = new ArrayList<>();
+
+            for (int j = 1; j <= qtdJogadoresPartida; j++) {
+                // Mostrar lista de jogadores cadastrados
+                System.out.println("Escolha o número do jogador:");
+                for (int k = 0; k < jogadores.size(); k++) {
+                    System.out.println((k+1) + " - " + jogadores.get(k).getNome()) ;
+                }
+
+                int escolha = sc.nextInt();
+                sc.nextLine();
+                jogadoresDaPartida.add(jogadores.get(escolha - 1));
+            }
+
+            //Criar a partida com os jogadores selecionados
+            partidas.add(new Partida (jogadoresDaPartida));
         }
+
+        //Dividir a conta
+        DivisorConta.dividir(partidas, valorFicha * qtdPartidas);
+
+        sc.close();
     }
 }
