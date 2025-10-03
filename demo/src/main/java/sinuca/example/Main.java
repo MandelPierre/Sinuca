@@ -34,6 +34,9 @@ public class Main {
         //Cada partida perguntar quem jogou
         for (int p = 1; p <= qtdPartidas; p++) {
             System.out.println("-----Partida "+ p + "-----");
+            System.out.print("Quantos jogadores jogaram esta partida? ");
+            int qtdJogadoresPartida = sc.nextInt();
+            sc.nextLine();
         }
     }
 }
