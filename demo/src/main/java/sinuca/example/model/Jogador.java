@@ -1,4 +1,4 @@
-package sinuca.example;
+package sinuca.example.model;
 
 public class Jogador {
     private String nome;
