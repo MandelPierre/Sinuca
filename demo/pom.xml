@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Parent que gerencia versões do Spring Boot -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.4</version> <!-- ou a versão que você preferir -->
+        <relativePath/> 
+    </parent>
+
     <groupId>sinuca.example</groupId>
     <artifactId>sinuca-web</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -14,29 +22,31 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring.boot.version>3.3.4</spring.boot.version>
     </properties>
 
     <dependencies>
-        <!-- Dependência principal do Spring Boot (para rodar o servidor) -->
+        <!-- Actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Dependência principal do Spring Boot (servidor / MVC) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
 
-        <!-- Para usar páginas HTML com Thymeleaf -->
+        <!-- Thymeleaf (opcional, para templates HTML) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
 
         <!-- Testes (opcional) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -46,7 +56,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
             </plugin>
         </plugins>
     </build>
