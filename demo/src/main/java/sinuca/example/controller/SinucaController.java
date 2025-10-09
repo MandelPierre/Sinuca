@@ -1,12 +1,19 @@
 package sinuca.example.controller;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.util.Map;
+
 import sinuca.example.model.CalculoRequest;
 import sinuca.example.service.SinucaService;
 
-@RestController
-@RequestMapping("/api")
+@Controller
+@RequestMapping("/sinuca")
 public class SinucaController {
 
     private final SinucaService service;
@@ -15,8 +22,15 @@ public class SinucaController {
         this.service = service;
     }
 
+    @GetMapping
+    public String index() {
+        return "html/index"; // vai carregar templates/index.html
+    }
+
     @PostMapping("/calcular")
-    public Map<String, Double> calcular(@RequestBody CalculoRequest req) {
-        return service.calcular(req);
+    public String calcular(@ModelAttribute CalculoRequest req, Model model) {
+        Map<String, Double> resultado = service.calcular(req);
+        model.addAttribute("resultado", resultado);
+        return "index";
     }
 }

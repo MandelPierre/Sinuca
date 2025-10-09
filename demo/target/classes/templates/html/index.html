@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinuca - Sistema</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Bem-vindo ao Sistema de Sinuca</h1>
+
+    <form th:action="@{/calcular}" method="post">
+        <label for="jogador">Nome do Jogador:</label>
+        <input type="text" name="nomeJogador" required>
+
+        <label for="partidas">Número de partidas:</label>
+        <input type="number" name="partidas" required>
+
+        <button type="submit">Calcular</button>
+    </form>
+
+    <div th:if="${resultado}">
+        <h3>Resultado:</h3>
+        <p th:text="${resultado}"></p>
+    </div>
+</body>
+</html>

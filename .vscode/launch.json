@@ -9,6 +9,16 @@
             "projectName": "demo",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SinucaApplication<sinuca-web>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "sinuca.example.SinucaApplication",
+            "projectName": "sinuca-web",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
