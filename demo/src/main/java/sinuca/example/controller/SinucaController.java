@@ -31,6 +31,6 @@ public class SinucaController {
     public String calcular(@ModelAttribute CalculoRequest req, Model model) {
         Map<String, Double> resultado = service.calcular(req);
         model.addAttribute("resultado", resultado);
-        return "index";
+        return "html/index";
     }
 }
