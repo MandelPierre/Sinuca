@@ -24,13 +24,13 @@ public class SinucaController {
 
     @GetMapping
     public String index() {
-        return "html/index"; // vai carregar templates/index.html
+        return "index"; // vai carregar templates/index.html
     }
 
     @PostMapping("/calcular")
     public String calcular(@ModelAttribute CalculoRequest req, Model model) {
         Map<String, Double> resultado = service.calcular(req);
         model.addAttribute("resultado", resultado);
-        return "html/index";
+        return "index";
     }
 }
