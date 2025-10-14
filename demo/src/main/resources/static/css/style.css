@@ -1,12 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
     margin: 20px;
     text-align: center;
+    background-image: url("../images/background.png");
+    background-size: cover;
 }
 
 h1 {
-    color: #333;
+    color: #ffffff;
 }
 
 form {
@@ -16,7 +17,7 @@ form {
     width: 300px;
     background: #fff8;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgb(1, 104, 10);
 }
 
 label {
@@ -24,7 +25,7 @@ label {
     font-weight: bold;
     margin-bottom: 8px;
     text-align: left;
-    color: #555;
+    color: #0000009f;
 }
 
 input[type="text"],
@@ -72,17 +73,17 @@ button:active {
     width: 320px;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.08);
     text-align: left;
 }
 
 .resultado h3 {
     margin-top: 0;
-    color: #333;
+    color: #000000;
 }
 
 .resultado p {
     margin: 10px 0 0 0;
-    color: #444;
+    color: #000000;
     line-height: 1.5;
 }
