@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -31,6 +32,17 @@ public class SinucaController {
     public String calcular(@ModelAttribute CalculoRequest req, Model model) {
         Map<String, Double> resultado = service.calcular(req);
         model.addAttribute("resultado", resultado);
+        return "index";
+    }
+
+    @PostMapping("/registrar")
+    public String registrar(@RequestParam String nomeJogador,
+                        @RequestParam int partidas,
+                        @RequestParam double valorFicha,
+                        Model model) {
+
+        service.registrarJogador(nomeJogador, partidas, valorFicha);
+        model.addAttribute("jogadores", service.getJogadores());
         return "index";
     }
 }

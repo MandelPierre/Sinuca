@@ -2,28 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sinuca - Sistema</title>
+    <title>Sinuca - Registro de Jogadores</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Bem-vindo ao Sistema de Sinuca</h1>
+    <h1>Sistema de Sinuca</h1>
 
-    <form th:action="@{/calcular}" method="post">
+    <!-- Formulário de registro -->
+    <form th:action="@{/registrar}" method="post" class="formulario">
         <div class="form-group">
             <label for="nomeJogador">Nome do Jogador:</label>
-            <input type="text" id="nomeJogador" name="nomeJogador" required>
+            <input type="text" id="nomeJogador" name="nomeJogador" placeholder="Digite o nome do jogador" required>
         </div>
 
         <div class="form-group">
             <label for="partidas">Número de partidas:</label>
-            <input type="number" id="partidas" name="partidas" required>
+            <input type="number" id="partidas" name="partidas" min="0" required>
         </div>
 
         <div class="form-group">
-            <button type="submit">Calcular</button>
+            <label for="valorFicha">Valor da Ficha (R$):</label>
+            <input type="number" id="valorFicha" name="valorFicha" step="0.01" min="0" required>
         </div>
+
+        <button type="submit">Registrar Jogador</button>
     </form>
 
+    <!-- Tabela de jogadores -->
+    <div th:if="${jogadores}" class="tabela-container">
+        <h3>Jogadores Registrados:</h3>
+        <table class="tabela-jogadores">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Partidas</th>
+                    <th>Valor da Ficha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="j : ${jogadores}">
+                    <td th:text="${j.nome}"></td>
+                    <td th:text="${j.partidas}"></td>
+                    <td th:text="${j.valorFicha}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Botão para cálculo -->
+    <form th:action="@{/calcular}" method="post" th:if="${jogadores}">
+        <button type="submit" class="botao-calcular">Calcular Total</button>
+    </form>
+
+    <!-- Resultado final -->
     <div th:if="${resultado}" class="resultado">
         <h3>Resultado:</h3>
         <p th:text="${resultado}"></p>

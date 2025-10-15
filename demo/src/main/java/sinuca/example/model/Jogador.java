@@ -2,21 +2,16 @@ package sinuca.example.model;
 
 public class Jogador {
     private String nome;
-    private double valorDevido = 0;
+    private int partidas;
+    private double valorFicha;
 
-    public Jogador(String nome) {
+    public Jogador(String nome, int partidas, double valorFicha) {
         this.nome = nome;
+        this.partidas = partidas;
+        this.valorFicha = valorFicha;
     }
 
-    public void adicionarCusto(double valor) {
-        this.valorDevido += valor;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public double getValorDevido() {
-        return valorDevido;
-    }
+    public String getNome() { return nome; }
+    public int getPartidas() { return partidas; }
+    public double getValorFicha() { return valorFicha; }
 }
