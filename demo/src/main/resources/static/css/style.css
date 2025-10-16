@@ -51,7 +51,7 @@ input[type="number"]:focus {
 }
 
 button {
-    width: 100%;
+    width: 200px;
     padding: 10px;
     background-color: #4caf50;
     color: white;
@@ -72,13 +72,13 @@ button:active {
 }
 
 .resultado {
-    margin: 20px auto;
-    padding: 15px;
+    margin: 40px auto;
+    padding: 20px 30px;
     width: 320px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.08);
-    text-align: left;
+    background-color: #ffffffcc;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .resultado h3 {
