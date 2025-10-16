@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado Final</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Resultado Final</h1>
+    <div class="resultado" th:utext="${resultado}"></div>
+
+    <a th:href="@{/sinuca/inicio}">
+        <button>Voltar ao início</button>
+    </a>
+</body>
+</html>

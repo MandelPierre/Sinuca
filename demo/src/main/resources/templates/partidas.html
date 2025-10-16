@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Jogadores</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Selecione quem jogou em cada partida</h1>
+
+    <form th:action="@{/sinuca/calcular}" method="post" th:object="${req}">
+        <input type="hidden" th:field="*{valorFicha}">
+        <div th:each="nomeJogador : *{nomesJogadores}">
+            <input type="hidden" th:name="nomesJogadores" th:value="${nomeJogador}">
+        </div>
+
+        <div th:each="partida, stat : *{partidas}">
+            <h3 th:text="${partida.nome}"></h3>
+
+            <div th:each="nome : *{nomesJogadores}">
+                <label>
+                    <input type="checkbox"
+                           th:field="*{partidas[__${stat.index}__].jogadores}"
+                           th:value="${nome}">
+                    <span th:text="${nome}"></span>
+                </label>
+            </div>
+
+            <hr>
+        </div>
+
+        <button type="submit">Calcular Resultado</button>
+    </form>
+</body>
+</html>

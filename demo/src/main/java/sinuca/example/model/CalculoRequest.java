@@ -1,16 +1,20 @@
 package sinuca.example.model;
 
-import sinuca.example.model.Partida;
-import java.util.List;
+import java.util.*;
 
 public class CalculoRequest {
-    private double valorFicha;
     private List<Partida> partidas;
+    private double valorFicha;
+    private List<String> nomesJogadores;
 
-    // Construtor vazio (necessário para o Spring)
-    public CalculoRequest() {}
+    public List<Partida> getPartidas() {
+        return partidas;
+    }
 
-    // Getters e Setters
+    public void setPartidas(List<Partida> partidas) {
+        this.partidas = partidas;
+    }
+
     public double getValorFicha() {
         return valorFicha;
     }
@@ -19,11 +23,11 @@ public class CalculoRequest {
         this.valorFicha = valorFicha;
     }
 
-    public List<Partida> getPartidas() {
-        return partidas;
+    public List<String> getNomesJogadores() {
+        return nomesJogadores;
     }
 
-    public void setPartidas(List<Partida> partidas) {
-        this.partidas = partidas;
+    public void setNomesJogadores(List<String> nomesJogadores) {
+        this.nomesJogadores = nomesJogadores;
     }
 }
