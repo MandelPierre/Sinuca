@@ -9,6 +9,8 @@
     <h1>Selecione quem jogou em cada partida</h1>
 
     <form th:action="@{/sinuca/calcular}" method="post" th:object="${req}" class="form-partidas">
+
+        <!-- Mantém valor da ficha e lista de jogadores escondidos -->
         <input type="hidden" th:field="*{valorFicha}">
         <div th:each="nomeJogador : *{nomesJogadores}">
             <input type="hidden" th:name="nomesJogadores" th:value="${nomeJogador}">
@@ -21,15 +23,15 @@
                 <div class="jogadores-lista" th:each="nome : *{nomesJogadores}">
                     <label>
                         <input type="checkbox"
-                            th:field="*{partidas[__${stat.index}__].jogadores}"
-                            th:value="${nome}">
+                               th:field="*{partidas[__${stat.index}__].jogadores}"
+                               th:value="${nome}">
                         <span th:text="${nome}"></span>
                     </label>
                 </div>
             </div>
-        </div>
 
-        <button type="submit" class="botao-calcular">Calcular Resultado</button>
+            <button type="submit" class="botao-calcular">Calcular Resultado</button>
+        </div>
     </form>
 </body>
 </html>
