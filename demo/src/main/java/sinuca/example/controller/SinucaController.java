@@ -18,7 +18,7 @@ public class SinucaController {
         this.service = service;
     }
 
-    // === Tela 1: configuração inicial ===
+    // Tela 1: configuração inicial
     @GetMapping("/inicio")
     public String telaInicial() {
         return "inicio";
@@ -35,7 +35,7 @@ public class SinucaController {
         List<Partida> partidas = new ArrayList<>();
         
         for (int i = 1; i <= qtdPartidas; i++) {
-            // se todos jogaram já preenche todas as partidas com os mesmos jogadores
+            // Se todos jogaram já preenche todas as partidas com os mesmos jogadores
             if (todosJogaram.equals("sim")) {
                partidas.add(new Partida("Partida " + i, new ArrayList<>(nomesJogadores))); 
             }
@@ -48,13 +48,13 @@ public class SinucaController {
         req.setNomesJogadores(nomesJogadores);
 
         if (todosJogaram.equals("sim")) {
-            // se todos jogaram todas, ja calcula e vai direto para o resultado
+            // Se todos jogaram todas, ja calcula e vai direto para o resultado
             Map<String, Double> totais = service.calcular(req);
             String resultado = service.gerarResumo(totais);
             model.addAttribute("resultado", resultado);
             return "resultado";
         } else {
-            // se nem todos jogaram, vai pra tela de seleção manual
+            // Se nem todos jogaram, vai pra tela de seleção manual
             model.addAttribute("req", req);
             return "partidas";
         }
@@ -62,7 +62,7 @@ public class SinucaController {
         
     }
 
-    // === Tela 2: recebe as partidas com os jogadores ===
+    // Tela 2: recebe as partidas com os jogadores
     @PostMapping("/calcular")
     public String calcular(@ModelAttribute CalculoRequest req, Model model) {
         Map<String, Double> totais = service.calcular(req);

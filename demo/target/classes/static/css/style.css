@@ -1,3 +1,6 @@
+/* =========================================================
+           CSS GERAL — usado por todas as páginas
+   ========================================================= */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -12,16 +15,6 @@ h1 {
 
 h3 {
     color: #0000009f;
-}
-
-form {
-    margin: 20px auto;
-    padding: 15px;
-    border: 1px solid #ccc;
-    width: 300px;
-    background: #fff8;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgb(1, 104, 10);
 }
 
 label {
@@ -50,16 +43,42 @@ input[type="number"]:focus {
     outline: none;
 }
 
+/* =========================================================
+   PÁGINA: INÍCIO (Configuração inicial e adicionar jogadores)
+   ========================================================= */
+form {
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    width: 300px;
+    background: #fff8;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(1, 104, 10);
+}
+
+/* Formulário geral */
+.formulario {
+    width: 320px;
+    margin: 15px auto;
+    padding: 15px;
+    background: #ffffffcc;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(1, 104, 10, 0.4);
+}
+
+/* Botões principais do início (ex: Avançar, Adicionar jogador) */
 button {
-    width: 200px;
+    width: 250px;
     padding: 10px;
     background-color: #4caf50;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
 }
 
 button:hover {
@@ -71,87 +90,7 @@ button:active {
     transform: translateY(0);
 }
 
-.resultado {
-    margin: 40px auto;
-    padding: 20px 30px;
-    width: 320px;
-    background-color: #ffffffcc;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.resultado h3 {
-    margin-top: 0;
-    color: #0000009f;
-}
-
-.resultado p {
-    margin: 10px 0 0 0;
-    color: #0000009f;
-    line-height: 1.5;
-}
-
-/* Formulário */
-.formulario {
-    width: 320px;
-    margin: 20px auto;
-    padding: 15px;
-    background: #ffffffcc;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(1, 104, 10, 0.4);
-}
-
-/* Tabela */
-.tabela-container {
-    margin: 20px auto;
-    width: 80%;
-    max-width: 600px;
-    background: #ffffffcc;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(1, 104, 10, 0.3);
-    padding: 15px;
-}
-
-.tabela-jogadores {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabela-jogadores th,
-.tabela-jogadores td {
-    padding: 8px 10px;
-    border-bottom: 1px solid #ccc;
-    text-align: left;
-}
-
-.tabela-jogadores th {
-    background-color: #4caf50;
-    color: white;
-}
-
-/* Botão Calcular */
-.botao-calcular {
-    width: 320px;
-    display: block;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #388e3c;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.botao-calcular:hover {
-    background-color: #2e7d32;
-    transform: translateY(-1px);
-}
-
-/* Botões para saber se todos jogaram todas partidas */
+/* Botões de escolha "Todos jogaram?" */
 .opcoes-simnao {
     display: flex;
     justify-content: center;
@@ -183,5 +122,117 @@ button:active {
 .opcao input[type="radio"]:checked + span {
     background-color: #4caf50;
     color: white;
+    transform: scale(1.05);
+}
+
+/* =========================================================
+          PÁGINA: PARTIDAS (Seleção de quem jogou)
+   ========================================================= */
+
+/* Container principal da página de partidas */
+.partidas-container {
+    overflow: auto;
+    height: 70vh;
+    margin: 30px auto;
+    padding: 20px;
+    width: 350px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Bloco de cada partida */
+.partida-bloco {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.partida-bloco h3 {
+    margin-bottom: 10px;
+    color: #222;
+    font-weight: bold;
+}
+
+/* Lista de jogadores dentro de cada partida */
+.jogadores-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+/* Checkbox e nome alinhados */
+.jogadores-lista label {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Botão de cálculo */
+.botao-calcular {
+    display: block;
+    margin: 25px auto 0;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-calcular:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+                    PÁGINA: RESULTADO FINAL
+   ========================================================= */
+
+/* Card central com valores calculados */
+.resultado {
+    margin: 40px auto;
+    padding: 20px 30px;
+    width: 320px;
+    background-color: #ffffffcc;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.resultado h3 {
+    margin-top: 0;
+    color: #0000009f;
+}
+
+.resultado p {
+    margin: 10px 0 0 0;
+    color: #0000009f;
+    line-height: 1.5;
+}
+
+.resultado ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Botão exclusivo da tela final */
+.btn-inicio {
+    width: 200px;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+.btn-inicio:hover {
+    background-color: #45a049;
     transform: scale(1.05);
 }
