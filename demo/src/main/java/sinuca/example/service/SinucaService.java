@@ -28,7 +28,7 @@ public class SinucaService {
 
     public String gerarResumo(Map<String, Double> totais) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<h2>Valor a pagar</h2>");
+        sb.append("<h2 style='margin-top: 0;'>Valor a pagar</h2>");
         sb.append("<ul>");
         double totalGeral = 0;
 
