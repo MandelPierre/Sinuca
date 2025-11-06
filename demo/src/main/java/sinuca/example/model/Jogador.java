@@ -11,7 +11,15 @@ public class Jogador {
         this.valorFicha = valorFicha;
     }
 
-    public String getNome() { return nome; }
-    public int getPartidas() { return partidas; }
-    public double getValorFicha() { return valorFicha; }
+    public String getNome() { 
+        return nome; 
+    }
+
+    public int getPartidas() { 
+        return partidas; 
+    }
+    
+    public double getValorFicha() { 
+        return valorFicha; 
+    }
 }
