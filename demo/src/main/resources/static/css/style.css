@@ -63,7 +63,6 @@ form {
     box-shadow: 0 4px 12px rgb(1, 104, 10);
 }
 
-/* Formulário geral */
 .formulario {
     width: 320px;
     margin: 20px auto;
@@ -76,7 +75,6 @@ form {
     overflow-y: auto;
 }
 
-/* Barra de rolagem personalizada */
 .formulario::-webkit-scrollbar {
   width: 8px;
 }
@@ -94,7 +92,6 @@ form {
   margin-top: 45px;
 }
 
-/* Botões principais do início (ex: Avançar, Adicionar jogador) */
 button {
     width: 250px;
     padding: 10px;
@@ -117,7 +114,6 @@ button:active {
     transform: translateY(0);
 }
 
-/* Botões de escolha "Todos jogaram?" */
 .opcoes-simnao {
     display: flex;
     justify-content: center;
@@ -132,7 +128,7 @@ button:active {
 }
 
 .opcao input[type="radio"] {
-    display: none; /* esconde o botão padrão */
+    display: none;
 }
 
 .opcao span {
@@ -156,7 +152,6 @@ button:active {
           PÁGINA: PARTIDAS (Seleção de quem jogou)
    ========================================================= */
 
-/* Remove o fundo e sombra herdados do estilo global do <form> */
 .form-partidas {
   background: transparent !important;
   border: none !important;
@@ -166,7 +161,6 @@ button:active {
   margin: 0 auto;
 }
 
-/* Container principal da página de partidas */
 .partidas-container {
   margin: 20px auto;
   padding: 15px;
@@ -179,7 +173,6 @@ button:active {
   text-align: center;
 }
 
-/* Barra de rolagem personalizada */
 .partidas-container::-webkit-scrollbar {
   width: 8px;
 }
@@ -193,7 +186,6 @@ button:active {
   background-color: #45a049;
 }
 
-/* Bloco de cada partida */
 .partida-bloco {
   margin-bottom: 25px;
   padding-bottom: 15px;
@@ -208,7 +200,6 @@ button:active {
   text-align: center;
 }
 
-/* Lista dos jogadores dentro de cada partida */
 .jogadores-lista {
   display: flex;
   flex-direction: column;
@@ -229,13 +220,11 @@ button:active {
   margin-right: 8px;
 }
 
-/* Efeito visual quando o usuário passa o mouse no nome */
 .jogadores-lista label:hover span {
   color: #4caf50;
   font-weight: bold;
 }
 
-/* Botão de Calcular dentro do container */
 .partidas-container .botao-calcular {
   display: block;
   width: 80%;
@@ -260,7 +249,6 @@ button:active {
   transform: translateY(0);
 }
 
-/* ===== Cabeçalho da página ===== */
 h1 {
   color: #fff;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -273,7 +261,6 @@ h1 {
                     PÁGINA: RESULTADO FINAL
    ========================================================= */
 
-/* Card central com valores calculados */
 .resultado {
     margin: 20px auto;
     padding: 20px 30px;
@@ -300,7 +287,6 @@ h1 {
     padding-left: 0;
 }
 
-/* Botão exclusivo da tela final */
 .btn-inicio {
     width: 200px;
     padding: 10px;
