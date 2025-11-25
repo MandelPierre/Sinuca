@@ -1,0 +1,5 @@
+sinuca\example\SinucaApplication.class
+sinuca\example\model\CalculoRequest.class
+sinuca\example\service\SinucaService.class
+sinuca\example\controller\SinucaController.class
+sinuca\example\model\Partida.class
