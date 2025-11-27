@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import sinuca.example.model.*;
 import sinuca.example.service.SinucaService;
+import sinuca.example.model.Jogador;
 
 import java.util.*;
 
@@ -45,7 +46,7 @@ public class SinucaController {
         req.setNomesJogadores(nomesJogadores);
 
         if (todosJogaram.equals("sim")) {
-            Map<String, Double> totais = service.calcular(req);
+            Map<Jogador, Double> totais = service.calcular(req);
             String resultado = service.gerarResumo(totais);
             model.addAttribute("resultado", resultado);
             return "resultado";
@@ -59,7 +60,7 @@ public class SinucaController {
 
     @PostMapping("/calcular")
     public String calcular(@ModelAttribute CalculoRequest req, Model model) {
-        Map<String, Double> totais = service.calcular(req);
+        Map<Jogador, Double> totais = service.calcular(req);
         String resultado = service.gerarResumo(totais);
 
         model.addAttribute("resultado", resultado);

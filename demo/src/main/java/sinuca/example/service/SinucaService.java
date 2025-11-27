@@ -4,41 +4,66 @@ import java.util.*;
 import org.springframework.stereotype.Service;
 import sinuca.example.model.CalculoRequest;
 import sinuca.example.model.Partida;
+import sinuca.example.model.Jogador;
 
 @Service
 public class SinucaService {
 
-    public Map<String, Double> calcular(CalculoRequest req) {
-        Map<String, Double> totais = new LinkedHashMap<>();
+    public Map<Jogador, Double> calcular(CalculoRequest req) {
+
+        Map<String, Jogador> jogadoresPorNome = new LinkedHashMap<>();
+
+        if (req.getPartidas() == null) {
+            return Collections.emptyMap();
+        }
 
         for (Partida partida : req.getPartidas()) {
             if (partida == null) continue;
 
-            List<String> jogadores = partida.getJogadores();
-            if (jogadores == null || jogadores.isEmpty()) continue;
+            List<String> nomes = partida.getJogadores();
+            if (nomes == null || nomes.isEmpty()) continue;
 
-            double porJogador = req.getValorFicha() / jogadores.size();
+            double porJogador = req.getValorFicha() / nomes.size();
 
-            for (String nome : jogadores) {
-                totais.merge(nome, porJogador, Double::sum);
+            for (String nome : nomes) {
+                Jogador jog = jogadoresPorNome
+                        .computeIfAbsent(nome, n -> new Jogador(n));
+                jog.adicionarPartida();
+                jog.adicionarValor(porJogador);
             }
         }
+
+        Map<Jogador, Double> totais = new LinkedHashMap<>();
+        for (Jogador j : jogadoresPorNome.values()) {
+            totais.put(j, j.getTotalAPagar());
+        }
+
         return totais;
     }
 
-    public String gerarResumo(Map<String, Double> totais) {
+    public String gerarResumo(Map<Jogador, Double> totais) {
         StringBuilder sb = new StringBuilder();
         sb.append("<h2 style='margin-top: 0;'>Valor a pagar</h2>");
         sb.append("<ul>");
         double totalGeral = 0;
 
-        for (Map.Entry<String, Double> entry : totais.entrySet()) {
-            sb.append(String.format("<li>%s: R$ %.2f</li>", entry.getKey(), entry.getValue()));
-            totalGeral += entry.getValue();
+        for (Map.Entry<Jogador, Double> entry : totais.entrySet()) {
+            Jogador j = entry.getKey();
+            double valor = entry.getValue();
+
+            sb.append(String.format(
+                "<li>%s: R$ %.2f (partidas: %d)</li>",
+                j.getNome(), valor, j.getPartidasJogadas()
+            ));
+
+            totalGeral += valor;
         }
 
         sb.append("</ul>");
-        sb.append(String.format("<p><strong>Total geral:</strong> R$ %.2f</p>", totalGeral));
+        sb.append(String.format(
+            "<p><strong>Total geral:</strong> R$ %.2f</p>",
+            totalGeral
+        ));
         return sb.toString();
     }
 }
