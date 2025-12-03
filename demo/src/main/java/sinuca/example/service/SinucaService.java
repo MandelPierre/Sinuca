@@ -5,10 +5,17 @@ import org.springframework.stereotype.Service;
 import sinuca.example.model.CalculoRequest;
 import sinuca.example.model.Partida;
 import sinuca.example.model.Jogador;
+import sinuca.example.repository.SinucaRepository;
 
 @Service
 public class SinucaService {
 
+    private final SinucaRepository repository;
+
+    public SinucaService(SinucaRepository repository) {
+        this.repository = repository;
+    }
+    
     public Map<Jogador, Double> calcular(CalculoRequest req) {
 
         Map<String, Jogador> jogadoresPorNome = new LinkedHashMap<>();
@@ -23,13 +30,20 @@ public class SinucaService {
             List<String> nomes = partida.getJogadores();
             if (nomes == null || nomes.isEmpty()) continue;
 
+            Long idPartida = repository.salvarPartida(partida.getNome());
+
             double porJogador = req.getValorFicha() / nomes.size();
 
             for (String nome : nomes) {
+
+                Long idJogador = repository.buscarOuCriarJogador(nome);
+
                 Jogador jog = jogadoresPorNome
                         .computeIfAbsent(nome, n -> new Jogador(n));
                 jog.adicionarPartida();
                 jog.adicionarValor(porJogador);
+
+                repository.salvarParticipacao(idPartida, idJogador, porJogador);
             }
         }
 
